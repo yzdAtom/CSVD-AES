@@ -12,6 +12,7 @@ class model_fea(nn.Module):
         self.encoder = encoder
         self.config=config
         self.tokenizer=tokenizer
+        self.metric_fc = nn.Linear(39, 768)
         self.attention = nn.MultiheadAttention(embed_dim=768 * 2, num_heads=head_num)
 
     def forward(self, input_ids=None, code_metrics=None):
@@ -20,7 +21,8 @@ class model_fea(nn.Module):
         cls_first = outputs.hidden_states[1][:,0,:]
         cls_last = outputs.hidden_states[-1][:,0,:]
         cls = cls_first + cls_last
-        combined_features = torch.cat((cls, code_metrics), dim=1)
+        metric_features = self.metric_fc(code_metrics)
+        combined_features = torch.cat((cls, metric_features), dim=1)
         combined_features = combined_features.unsqueeze(0)
         attention_output, _ = self.attention(combined_features, combined_features, combined_features)
         cls = attention_output.squeeze(0)
