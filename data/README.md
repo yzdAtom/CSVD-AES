@@ -1,1 +1,1 @@
-### After our paper is accepted, we will open-source all the data and related code.
+### After our paper is accepted, we will open-source the data and related code.
