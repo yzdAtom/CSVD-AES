@@ -27,6 +27,10 @@ You can download the original data from [here](https://github.com/DanielLin1986/
 
 We put the figures in `figs\` folder
 
+## Run
+
+If you want to directly run our model, you can use the preprocessed data and directly run `run.py`.
+
 ## References
 
 [1] Z. Cai, Y. Cai, X. Chen, G. Lu, W. Pei, J. Zhao, Csvd-tf: Cross-project software vulnerability detection with tradaboost by fusing expert metrics and semantic metrics, Journal of Systems and Software 213 (2024) 112038.
