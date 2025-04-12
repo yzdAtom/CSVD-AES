@@ -93,40 +93,11 @@ def evaluate(test_data_file, indexs_lb, device, fea, clf, tokenizer):
         else:
             preds[index] = 1
 
-    acc = accuracy_score(labels_1d, preds)
-    pre = precision_score(labels_1d, preds)
-    rec = recall_score(labels_1d, preds)
-    f1 = f1_score(labels_1d, preds)
     auc = roc_auc_score(labels_1d, preds)
-    mcc = matthews_corrcoef(labels_1d, preds)
-    tn, fp, fn, tp = confusion_matrix(labels_1d, preds).ravel()
-    if (fp + tn) == 0:
-        fpr = -1.0
-    else:
-        fpr = float(fp) / (fp + tn)
-
-    if (tp + fn) == 0:
-        fnr = -1.0
-    else:
-        fnr = float(fn) / (tp + fn)
-
-    logger.info("acc: %f", acc)
-    logger.info("pre: %f", pre)
-    logger.info("rec: %f", rec)
-    logger.info("f1: %f", f1)
     logger.info("auc: %f", auc)
-    logger.info("mcc: %f", mcc)
-    logger.info("fpr: %f", fpr)
-    logger.info("fnr: %f", fnr)
+
     result = {
-        "eval_acc": round(eval_acc, 4),
-        "eval_pre": round(pre, 4),
-        "eval_rec": round(rec, 4),
-        "eval_f1": round(f1, 4),
-        "eval_auc": round(auc, 4),
-        "eval_mcc": round(mcc, 4),
-        "eval_fpr": round(fpr, 4),
-        "eval_fnr": round(fnr, 4)
+        "eval_auc": round(auc, 4)
     }
 
     return result
@@ -325,14 +296,7 @@ for source_project in source_projects:
             for key, value in results.items():
                 logger.info("  %s = %s", key, round(value, 4))
             column_list = list()
-            column_list.append(results["eval_acc"])
-            column_list.append(results["eval_pre"])
-            column_list.append(results["eval_rec"])
-            column_list.append(results["eval_f1"])
             column_list.append(results["eval_auc"])
-            column_list.append(results["eval_mcc"])
-            column_list.append(results["eval_fpr"])
-            column_list.append(results["eval_fnr"])
             res.append(column_list)
             start_time = time.time()
             for rd in range(1, NUM_ROUND + 1):
@@ -350,14 +314,7 @@ for source_project in source_projects:
             for key, value in results.items():
                 logger.info("  %s = %s", key, round(value, 4))
             column_list = list()
-            column_list.append(results["eval_acc"])
-            column_list.append(results["eval_pre"])
-            column_list.append(results["eval_rec"])
-            column_list.append(results["eval_f1"])
             column_list.append(results["eval_auc"])
-            column_list.append(results["eval_mcc"])
-            column_list.append(results["eval_fpr"])
-            column_list.append(results["eval_fnr"])
             res.append(column_list)
             idxs_prefix = 'idx_lb'
             idxs_output_dir = os.path.join(output_dir, '{}'.format(idxs_prefix))
@@ -378,5 +335,5 @@ for source_project in source_projects:
             logger.info("Saving model checkpoint")
             logger.info('================%s=>%s Select Ratio: %s end %d===============' % (source_project, target_project, ratio, seed))
             logger.info('\n\n\n\n\n')
-            res_dataframe = pd.DataFrame(res, columns=["eval_acc", "eval_pre", "eval_rec", "eval_f1", "eval_auc", "eval_mcc", "eval_fpr", "eval_fnr"])
+            res_dataframe = pd.DataFrame(res, columns=["eval_auc"])
             res_dataframe.to_csv("./result/res_csv/%s/%s_%f_%d.csv" % (source_project, target_project, ratio, seed), index=False)
