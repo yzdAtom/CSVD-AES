@@ -54,3 +54,16 @@ python do_train.py
 vulnerability prediction, in: 2022 IEEE/ACM 19th International Con-
 ference on Mining Software Repositories (MSR), 2022, pp. 608–620.
 
+## Cite this paper
+If you want to use this code, please cite:
+
+```bibtex
+@article{yuan2026csvd,
+  title={CSVD-AES: Cross-project software vulnerability detection based on active learning with metric fusion},
+  author={Yuan, Zhidan and Chen, Xiang and Zhang, Juan and Zeng, Weiming},
+  journal={Information and Software Technology},
+  pages={108015},
+  year={2026},
+  publisher={Elsevier}
+}
+```
