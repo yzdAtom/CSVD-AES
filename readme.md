@@ -8,7 +8,7 @@ This is the source code to the paper "CSVD-AES: Cross-project software vulnerabi
 
 ## About the Datasets
 
-You can download the original data from [here](https://github.com/DanielLin1986/TransferRepresentationLearning)
+You can download the original data from [here](https://github.com/DanielLin1986/TransferRepresentationLearning). 
 
 ## Environment Setup
 
@@ -29,7 +29,12 @@ We put the figures in `figs\` folder
 
 ## Run
 
-If you want to directly run our model, you can use the preprocessed data and directly run `run.py`.
+If you want to directly run our model, navigate to the ALStage folder and run the training script:
+
+```bash
+cd CSVD-AES/ALStage
+python do_train.py
+```
 
 ## References
 
