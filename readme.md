@@ -8,7 +8,13 @@ This is the source code to the paper "CSVD-AES: Cross-project software vulnerabi
 
 ## About the Datasets
 
-You can download the original data from [here](https://github.com/DanielLin1986/TransferRepresentationLearning). 
+You can download the original data from [here](https://github.com/DanielLin1986/TransferRepresentationLearning). The data needs to be processed into a format similar to the files under the `CSVD-AES/cp_data` folder. Specifically, the data should be organized as **txt files**, with each line formatted as: label<SPLIT>source code<SPLIT>standardized manual metrics
+
+**Notes:**
+
+- `<SPLIT>` is the separator between the label, source code, and metrics.  
+- The `standardized manual metrics` should be a list of numerical features extracted from the source code.  
+- Make sure each line follows the format exactly, otherwise the model may not load the data correctly.
 
 ## Environment Setup
 
