@@ -54,7 +54,7 @@ python do_train.py
 vulnerability prediction, in: 2022 IEEE/ACM 19th International Con-
 ference on Mining Software Repositories (MSR), 2022, pp. 608–620.
 
-## Cite this paper
+## Citation
 If you want to use this code, please cite:
 
 ```bibtex
@@ -66,4 +66,5 @@ If you want to use this code, please cite:
   year={2026},
   publisher={Elsevier}
 }
+
 ```
